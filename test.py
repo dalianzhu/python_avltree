@@ -1,4 +1,4 @@
-from avltree import AvlTree, AvlTreeNode
+from avltree import AvlTree, AvlTreeNode, debug
 
 
 def test_case_1():
@@ -8,7 +8,7 @@ def test_case_1():
         1   4
            3 5
     """
-    print("test case 1")
+    debug("test case 1")
     tree = AvlTree()
     test_data = [1, 2, 3, 4, 5]
     for item in test_data:
@@ -21,7 +21,7 @@ def test_case_1():
 
 
 def test_case_2():
-    print("test case 2")
+    debug("test case 2")
     tree = AvlTree()
     test_data = [8, 5, 9, 10, 3, 6, 7]
     for item in test_data:
@@ -42,17 +42,17 @@ def test_case_2():
 
     dele_node = tree.root.left.left
     tree.delete(dele_node)
-    print("    {}({})".format(tree.root.value, tree.root.balance_factor))
+    debug("    {}({})".format(tree.root.value, tree.root.balance_factor))
     l1_1 = tree.root.left
     l1_2 = tree.root.right
-    print("   /   \\")
-    print(" %s(%s)    %s(%s)" % (l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
+    debug("   /   \\")
+    debug(" %s(%s)    %s(%s)" % (l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
 
     l2_1 = l1_1.left
     l2_2 = l1_1.right
     l2_4 = l1_2.right
-    print("/ \\       \\")
-    print("%s %s        %s" % (l2_1.value, l2_2.value, l2_4.value))
+    debug("/ \\       \\")
+    debug("%s %s        %s" % (l2_1.value, l2_2.value, l2_4.value))
 
     assert tree.root.value == 8
     assert tree.root.right.value == 9
@@ -72,7 +72,7 @@ def test_case_3():
         8
        5 9
     """
-    print("test case 3")
+    debug("test case 3")
     tree = AvlTree()
     test_data = [8, 5, 9, 10]
     for item in test_data:
@@ -81,11 +81,11 @@ def test_case_3():
         tree.add(temp_node)
     dele_node = tree.root.right.right
     tree.delete(dele_node)
-    print("    {}({})".format(tree.root.value, tree.root.balance_factor))
+    debug("    {}({})".format(tree.root.value, tree.root.balance_factor))
     l1_1 = tree.root.left
     l1_2 = tree.root.right
-    print("   /   \\")
-    print(" %s(%s)    %s(%s)" % (l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
+    debug("   /   \\")
+    debug(" %s(%s)    %s(%s)" % (l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
 
     assert tree.root.right.value == 9
     assert tree.root.right.balance_factor == 0
@@ -122,7 +122,7 @@ def test_case_4():
          /      /   \
       3(0)    6(0)  10(0)
     """
-    print("test case 4")
+    debug("test case 4")
     tree = AvlTree()
     test_data = [8, 5, 9, 10, 4, 3, 6]
     for item in test_data:
@@ -133,16 +133,16 @@ def test_case_4():
     dele_node = tree.root.right
     tree.delete(dele_node)
 
-    print("     {}({})".format(tree.root.value, tree.root.balance_factor))
-    print("   /       \\")
+    debug("     {}({})".format(tree.root.value, tree.root.balance_factor))
+    debug("   /       \\")
     l1_1 = tree.root.left
     l1_2 = tree.root.right
-    print("%s(%s)       %s(%s)" % (l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
-    print("  /          / \\")
+    debug("%s(%s)       %s(%s)" % (l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
+    debug("  /          / \\")
     l2_1 = l1_1.left
     l2_3 = l1_2.left
     l2_4 = l1_2.right
-    print(" %s(%s)      %s(%s)   %s(%s)   " % (
+    debug(" %s(%s)      %s(%s)   %s(%s)   " % (
         l2_1.value, l2_1.balance_factor, l2_3.value, l2_3.balance_factor, l2_4.value, l2_4.balance_factor))
 
 
@@ -155,7 +155,7 @@ def test_case_5():
      /      /   \
     3(0)   6(0) 10(0)
     """
-    print("test case 5")
+    debug("test case 5")
     tree = AvlTree()
     test_data = [8, 4, 10, 3, 5, 6]
     for item in test_data:
@@ -163,16 +163,16 @@ def test_case_5():
         temp_node.value = item
         tree.add(temp_node)
 
-    print("    {}({})".format(tree.root.value, tree.root.balance_factor))
-    print("   /      \\")
+    debug("    {}({})".format(tree.root.value, tree.root.balance_factor))
+    debug("   /      \\")
     l1_1 = tree.root.left
     l1_2 = tree.root.right
-    print("%s(%s)        %s(%s)" % (l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
-    print(" /          /    \\")
+    debug("%s(%s)        %s(%s)" % (l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
+    debug(" /          /    \\")
     l2_1 = l1_1.left
     l2_3 = l1_2.left
     l2_4 = l1_2.right
-    print("%s(%s)       %s(%s)   %s(%s)" % (l2_1.value, l2_1.balance_factor
+    debug("%s(%s)       %s(%s)   %s(%s)" % (l2_1.value, l2_1.balance_factor
                                             , l2_3.value, l2_3.balance_factor
                                             , l2_4.value, l2_4.balance_factor))
 
@@ -193,7 +193,7 @@ def test_case_6():
          8                       8             8
     """
 
-    print("test case 6")
+    debug("test case 6")
     tree = AvlTree()
     test_data = [10, 6, 12, 14, 3, 7, 8]
     for item in test_data:
@@ -204,20 +204,53 @@ def test_case_6():
     dele_node = tree.root.left
     tree.delete(dele_node)
 
-    print("      {}({})".format(tree.root.value, tree.root.balance_factor))
+    debug("      {}({})".format(tree.root.value, tree.root.balance_factor))
     l1_1 = tree.root.left
     l1_2 = tree.root.right
-    print("   {}({})    {}({})".format(l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
+    debug("   {}({})    {}({})".format(l1_1.value, l1_1.balance_factor, l1_2.value, l1_2.balance_factor))
 
     l2_1 = l1_1.left
     l2_2 = l1_1.right
     l2_4 = l1_2.right
-    print("{}({})  {}({})    {}({})".format(l2_1.value, l2_1.balance_factor,
+    debug("{}({})  {}({})    {}({})".format(l2_1.value, l2_1.balance_factor,
                                             l2_2.value, l2_2.balance_factor,
                                             l2_4.value, l2_4.balance_factor))
 
     assert tree.root.left.left.value == 3
     assert tree.root.right.balance_factor == -1
+
+def test_case_7():
+    """
+    build a tree like :
+          8
+         5 8
+            8
+    and rm the node 5.
+    result will be :
+          8
+         8 8
+    """
+    debug("test case 7")
+    tree = AvlTree()
+    test_data = [8, 5, 8, 8]
+    for item in test_data:
+        temp_node = AvlTreeNode()
+        temp_node.value = item
+        tree.add(temp_node)
+
+    dele_node = tree.root.left
+    tree.delete(dele_node)
+
+    assert tree.root.value == 8
+    assert tree.root.balance_factor == 0
+    debug("     {}({})".format(tree.root.value, tree.root.balance_factor))
+    debug("{}({})   {}({})".format(tree.root.left.value, tree.root.left.balance_factor,
+                                   tree.root.right.value, tree.root.right.balance_factor))
+
+
+
+
+
 
 func_arr = [
     test_case_1,
@@ -225,7 +258,8 @@ func_arr = [
     test_case_3,
     test_case_4,
     test_case_5,
-    test_case_6
+    test_case_6,
+    test_case_7
 ]
 
 for item in func_arr:
